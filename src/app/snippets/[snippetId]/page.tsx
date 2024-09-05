@@ -1,6 +1,20 @@
-function page(props: any) {
-  console.log(props);
-  return <div>page</div>;
+import { db } from "@/db";
+import { notFound } from "next/navigation";
+
+interface TypeOfSnippet {
+  params: {
+    snippetId: string;
+  };
 }
 
-export default page;
+async function ShowSnippetDetails(props: TypeOfSnippet) {
+  const snippetDetalis = await db.snippet.findFirst({
+    where: { id: +props.params.snippetId },
+  });
+  if (!snippetDetalis) {
+    return notFound();
+  }
+  return <div>{snippetDetalis.title}</div>;
+}
+
+export default ShowSnippetDetails;
