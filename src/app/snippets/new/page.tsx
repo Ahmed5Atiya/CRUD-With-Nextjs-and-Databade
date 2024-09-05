@@ -7,7 +7,7 @@ function CreateNewSnippet() {
     "use server";
     //check if user enter a value and valid
     const title = formData.get("title") as string;
-    const code = formData.get("title") as string;
+    const code = formData.get("code") as string;
 
     // create a new record
     const snippet = await db.snippet.create({
@@ -19,9 +19,9 @@ function CreateNewSnippet() {
     redirect("/");
   }
   return (
-    <div className="bg-slate-100 container py-16 px-6 flex items-center justify-center w-full">
+    <div className="bg-gray-100 w-full container mt-10 py-10 px-7 mb-10">
       <div className="container flex flex-col gap-4 w-full ">
-        <h1 className="font-bold m-3 text-3xl text-blue-600 font-mono text-center">
+        <h1 className="font-bold  m-3 text-3xl text-blue-600 font-mono text-center">
           Create New Snippet
         </h1>
         <form action={CreatePost} className="flex flex-col gap-4 w-full">

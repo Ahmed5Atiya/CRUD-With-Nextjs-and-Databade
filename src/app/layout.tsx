@@ -20,9 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Navebar />
-        <section className="w-full flex items-center justify-center">
-          {children}
-        </section>
+        <section className="w-full flex justify-center">{children}</section>
       </body>
     </html>
   );
