@@ -57,6 +57,8 @@ export async function CreatePost(
         massege: "there is some thing inCorrect",
       };
     }
+    // this for if i want to throw the error message for the error componant
+    // throw new Error("the data not save in database");
   }
 
   redirect("/");
