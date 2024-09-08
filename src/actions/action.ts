@@ -11,6 +11,9 @@ export async function UpdataSnippet(id: number, code: string) {
     data: { code },
   });
   console.log(id, code);
+
+  // cashing the data in the dynamic route for edit item [id]
+  revalidatePath(`/snippets/${id}`);
   redirect(`/snippets/${id}`);
 }
 export async function DeleteSnippet(id: number) {

@@ -51,3 +51,12 @@ async function ShowSnippetDetails(props: TypeOfSnippet) {
 }
 
 export default ShowSnippetDetails;
+// for caching the data in the dynamic routes
+export async function generateStaticParams() {
+  const snippet = await db.snippet.findMany();
+  return snippet.map((snippet) => {
+    return {
+      id: snippet.id.toString(),
+    };
+  });
+}
