@@ -1,6 +1,7 @@
 "use server";
 
 import { db } from "@/db";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export async function UpdataSnippet(id: number, code: string) {
@@ -18,6 +19,8 @@ export async function DeleteSnippet(id: number) {
     where: { id },
   });
   console.log(id);
+  // this is for when i delete the snippet that will be rebuild the home page to show the data
+  revalidatePath("/");
   redirect(`/`);
 }
 
@@ -60,6 +63,7 @@ export async function CreatePost(
     // this for if i want to throw the error message for the error componant
     // throw new Error("the data not save in database");
   }
-
+  // this is for when i Create the snippet that will be rebuild the home page to show the data
+  revalidatePath("/");
   redirect("/");
 }
